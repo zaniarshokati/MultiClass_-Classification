@@ -1,7 +1,7 @@
 # Image Classification with InceptionResNetV2 and Transfer Learning
 
 This GitHub repository provides a comprehensive guide and code for image classification using deep learning techniques, specifically leveraging the powerful InceptionResNetV2 model and transfer learning.
-##Introduction
+## Introduction
 Image classification is a crucial task in supervised machine learning, where the goal is to categorize images into predefined labels. In this repository, we focus on multi-class classification, a common scenario where images are classified into multiple categories. We'll demonstrate how to achieve this using the InceptionResNetV2 model, a pre-trained deep learning architecture, and how to adapt it to your specific needs.
 
 ##Transfer Learning
