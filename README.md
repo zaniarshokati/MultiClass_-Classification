@@ -40,4 +40,5 @@ The repository provides Python code for image classification using InceptionResN
 10. Evaluating the model's accuracy.
 11. Making predictions on test data.
 
-This GitHub repository includes code, explanations, and visualization tools to help you better understand and implement image classification with InceptionResNetV2 and transfer learning. It's a valuable resource for anyone interested in leveraging deep learning for image classification tasks.
+This GitHub repository includes code, explanations, and visualization tools to help you better understand and implement image classification with InceptionResNetV2 and transfer learning. It's a valuable resource for anyone interested in leveraging deep learning for image classification tasks. You
+can also download data from [here](https://drive.google.com/drive/folders/1z31bsh7gNrUiwameOEWhqtWNZuKEdKQ7?usp=sharing).
