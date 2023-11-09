@@ -113,7 +113,7 @@ class Classification:
             steps_per_epoch=STEP_SIZE_TRAIN,
             validation_data=validation_generator,
             validation_steps=STEP_SIZE_VALIDATION,
-            epochs=2,
+            epochs=1,
             callbacks=[early]
         )
 
@@ -126,25 +126,17 @@ class Classification:
         print("Accuracy: {:.4f}%".format(accuracy_score[1] * 100))
         print("Loss: ", accuracy_score[0])
 
-        # Test an image
-        test_img_path = test_path + "/000621fb3cbb32d8935728e48679680e.jpg"
-        img = cv2.imread(test_img_path)
-        resized_img = cv2.resize(img, (331, 331)).reshape(-1, 331, 331, 3) / 255
-
-        plt.figure(figsize=(6, 6))
-        plt.title("TEST IMAGE")
-        plt.imshow(resized_img[0])
-        plt.show()
-
         # Make predictions and create a submission file
         predictions = []
         for image in sample.id:
+            print(image)
             img = tf.keras.preprocessing.image.load_img(test_path + '/' + image)
             img = tf.keras.preprocessing.image.img_to_array(img)
             img = tf.keras.preprocessing.image.smart_resize(img, (331, 331))
             img = tf.reshape(img, (-1, 331, 331, 3))
             prediction = model.predict(img / 255)
-            predictions.append(np.argmax(prediction))
+            # predictions.append(np.argmax(prediction))
+            predictions.append(prediction)
 
         my_submission = pd.DataFrame({'image_id': sample.id, 'label': predictions})
         my_submission.to_csv('submission.csv', index=False)
@@ -160,10 +152,10 @@ class Classification:
             input_shape=(331, 331, 3)
         )
         # Fine-tune the top layers of the base model
-        fine_tune_at = 150 # 164 layers  
-        for layer in base_model.layers[:fine_tune_at]:
-            layer.trainable = False
-         # base_model.trainable = False
+        # fine_tune_at = 150 # 164 layers  
+        # for layer in base_model.layers[:fine_tune_at]:
+        #     layer.trainable = False
+        base_model.trainable = False
         return base_model
 
     def create_model(self, base_model):
